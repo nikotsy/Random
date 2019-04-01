@@ -1,0 +1,63 @@
+/* This function adds a Get_details(id) function that returns the data about a place based on it's id */
+
+function GET_DETAILS(id) {
+  var API_KEY = 'YOUR_PLACES_API_KEY';
+  var fields = 'name,rating,formatted_phone_number,formatted_address,geometry,price_level,opening_hours';
+  var baseUrl = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=';
+  var queryUrl = baseUrl + id + '&fields=' + fields + '&language=en&key='+ API_KEY;
+
+  if (id == '') {
+    return '';
+  }
+
+  var response = UrlFetchApp.fetch(queryUrl);
+  var json = response.getContentText();
+  var place = JSON.parse(json).result;
+
+  // Changed return format
+  return [[ place.name,
+            place.geometry['location']['lat'],
+            place.geometry['location']['lng'],
+            place.formatted_address,
+            place.formatted_phone_number,
+            place.rating,
+            place.price_level,
+            place.opening_hours,
+          ]];
+}
+
+/* This function adds a locID(text) function that returns the place id based on free text */
+
+function locId(text) {
+  var API_KEY = 'YOUR_PLACES_API_KEY';
+  var baseUrl = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json';
+  var queryUrl = baseUrl + '?input=' + text + '&inputtype=textquery&key=' + API_KEY;
+  var response = UrlFetchApp.fetch(queryUrl);
+  var json = response.getContentText();
+  var placeId = JSON.parse(json);
+  return placeId.candidates[0].place_id;
+}
+
+/* This function updated from google sheets to FireBase realtime database */
+
+function writeDataToFirebase() {
+  var ss = SpreadsheetApp.openById("YOUR_GOOGLE_SHEET_ID");
+  var sheet = ss.getSheets()[0];
+  var data = sheet.getDataRange().getValues();
+  var dataToImport = {};
+  for(var i = 1; i < data.length; i++) { /*starts from second row*/
+    var beerName = data[i][1];
+    if(beerName != 0){
+    dataToImport[beerName] = { /*main key*/
+      name:beerName, /*details*/
+      country:data[i][2], /*i = row, 2 = collumn*/
+      type:data[i][3],
+      style:data[i][4],
+      places:data[i][6],
+    };
+  }
+  }
+  var firebaseUrl = "YOUR_FIREBASE_DATABSE_URL";
+  var base = FirebaseApp.getDatabaseByUrl(firebaseUrl);
+  base.setData("beers", dataToImport); /* beers = main key to put all under, can be empty if you want the data to go under the root */
+}
