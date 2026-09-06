@@ -1,0 +1,44 @@
+{
+  "schema": "code-inventory/v1",
+  "spec_version": "1.0.1",
+  "type": "artifact",
+  "id": "sheets-places-lookup-functions",
+  "kind": "integration",
+  "name": "GET_DETAILS / locId",
+  "aliases": [
+    "Google Places custom functions",
+    "place lookup formula",
+    "Places API in a spreadsheet"
+  ],
+  "summary": "A pair of Google Apps Script custom functions that make the Google Places API callable straight from spreadsheet cells: locId(text) resolves free text to a place id, and GET_DETAILS(id) spills that place's name, coordinates, address, phone, rating, price level and opening hours across a row.",
+  "details": "The recall value is the technique, not the code: a custom function returning a nested array ([[a, b, c]]) is how one Apps Script call fills several cells at once, which is what makes the two-step locId -> GET_DETAILS chain usable as a plain formula pair in adjacent columns. Both functions inline an API_KEY constant, placeholdered here as YOUR_PLACES_API_KEY, so no real key is in the repository. Neither function handles an error response, a zero-candidate result (locId indexes candidates[0] unconditionally) or Apps Script's per-execution quota; GET_DETAILS only short-circuits on an empty id. place.opening_hours is emitted as a raw object, so that cell renders as [object Object] rather than usable hours. The endpoints are the legacy Places API (maps.googleapis.com/maps/api/place/...), which Google has since superseded with Places API (New).",
+  "capabilities": [
+    "geocoding",
+    "place-lookup",
+    "spreadsheet-formulas"
+  ],
+  "technologies": [
+    "google-apps-script",
+    "google-places-api",
+    "google-sheets"
+  ],
+  "languages": [
+    "javascript"
+  ],
+  "source": [
+    {
+      "path": "AppsScript for sheets",
+      "symbol": "GET_DETAILS",
+      "role": "primary",
+      "note": "locId is defined immediately below it in the same file."
+    }
+  ],
+  "status": "active",
+  "provenance": {
+    "first_indexed_sha": "1777d96171b2a89aea87fcbfb8c1eb394d42a49f",
+    "first_indexed_at": "2026-09-06T18:18:00Z",
+    "last_observed_sha": "1777d96171b2a89aea87fcbfb8c1eb394d42a49f",
+    "last_indexed_at": "2026-09-06T18:18:00Z",
+    "introduced_at_sha": "1777d96171b2a89aea87fcbfb8c1eb394d42a49f"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "code-inventory/v1",
+  "spec_version": "1.0.1",
+  "type": "index",
+  "repository": {
+    "name": "Random",
+    "owner": "nikotsy",
+    "remote": "https://github.com/nikotsy/Random.git",
+    "default_branch": "master"
+  },
+  "source": {
+    "sha": "1777d96171b2a89aea87fcbfb8c1eb394d42a49f",
+    "head_sha": "1777d96171b2a89aea87fcbfb8c1eb394d42a49f",
+    "config_sha": null,
+    "branch": "master",
+    "indexed_at": "2026-09-06T18:25:00Z"
+  },
+  "status": "complete",
+  "indexer": {
+    "agent": "claude",
+    "model": "claude-opus-5",
+    "run_id": "2026-09-06-random",
+    "run_type": "initial"
+  },
+  "project": {
+    "metadata": "project.json",
+    "narrative": "project.md"
+  },
+  "artifacts": [
+    {
+      "id": "sheets-places-lookup-functions",
+      "file": "artifacts/sheets-places-lookup-functions.json",
+      "name": "GET_DETAILS / locId",
+      "kind": "integration",
+      "status": "active"
+    },
+    {
+      "id": "sheets-to-firebase-rtdb-export",
+      "file": "artifacts/sheets-to-firebase-rtdb-export.json",
+      "name": "writeDataToFirebase",
+      "kind": "exporter",
+      "status": "active"
+    }
+  ],
+  "patterns": [],
+  "reviews": {
+    "file": "reviews/candidates.json",
+    "open": 0
+  },
+  "last_run": "runs/last-run.json",
+  "counts": {
+    "artifacts_active": 2,
+    "artifacts_removed": 0,
+    "patterns_active": 0,
+    "patterns_removed": 0
+  }
+}

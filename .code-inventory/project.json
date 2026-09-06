@@ -1,0 +1,50 @@
+{
+  "schema": "code-inventory/v1",
+  "spec_version": "1.0.1",
+  "type": "project",
+  "id": "random",
+  "name": "Random",
+  "aliases": [
+    "AppsScript for sheets",
+    "nikotsy scratch repo"
+  ],
+  "summary": "A scratch repository holding a single Google Apps Script file: two custom spreadsheet functions that query the Google Places API from cells, and a routine that exports a sheet into a Firebase Realtime Database node. Written in 2019 around a personal beer catalogue and never extended.",
+  "kind": "playground",
+  "lifecycle": "dormant",
+  "capabilities": [
+    "export",
+    "geocoding",
+    "place-lookup",
+    "seeding",
+    "spreadsheet-formulas",
+    "sync"
+  ],
+  "technologies": [
+    "firebase-realtime-database",
+    "google-apps-script",
+    "google-places-api",
+    "google-sheets"
+  ],
+  "languages": [
+    "javascript"
+  ],
+  "integrations": [
+    "firebase-realtime-database",
+    "google-places-api",
+    "google-sheets"
+  ],
+  "notable_areas": [
+    {
+      "path": "AppsScript for sheets",
+      "why": "The entire repository. Three functions: GET_DETAILS, locId, writeDataToFirebase."
+    }
+  ],
+  "narrative": "project.md",
+  "provenance": {
+    "first_indexed_sha": "1777d96171b2a89aea87fcbfb8c1eb394d42a49f",
+    "first_indexed_at": "2026-09-06T18:18:00Z",
+    "last_observed_sha": "1777d96171b2a89aea87fcbfb8c1eb394d42a49f",
+    "last_indexed_at": "2026-09-06T18:18:00Z",
+    "introduced_at_sha": "1777d96171b2a89aea87fcbfb8c1eb394d42a49f"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "code-inventory/v1",
+  "spec_version": "1.0.1",
+  "type": "run",
+  "run_id": "2026-09-06-random",
+  "repository": "nikotsy/Random",
+  "agent": "claude",
+  "model": "claude-opus-5",
+  "run_type": "initial",
+  "started_at": "2026-09-06T18:17:00Z",
+  "finished_at": "2026-09-06T18:25:00Z",
+  "previous_source_sha": null,
+  "new_source_sha": "1777d96171b2a89aea87fcbfb8c1eb394d42a49f",
+  "result": "complete",
+  "changes": {
+    "artifacts": { "created": 2, "updated": 0, "removed": 0, "restored": 0 },
+    "patterns": { "created": 0, "updated": 0, "removed": 0, "restored": 0 },
+    "reviews": { "created": 0, "resolved": 0 },
+    "project_updated": true
+  },
+  "warnings": [],
+  "limitations": [],
+  "error": null,
+  "notes": "The repository is one tracked file of 63 lines, added in a single commit in April 2019. Every line was read. Two artifacts rather than three: locId and GET_DETAILS are one concept (Places lookup as a spreadsheet formula pair) and are recorded together; writeDataToFirebase is an unrelated second idea sharing the file. No patterns — nothing here spans more than one implementation. No review candidates — small as it is, a Places-in-Sheets snippet and a Sheets-to-RTDB export are both clear answers to a 'have I done this before?' question, so neither was ambiguous. No config.json is present, so source.config_sha is null and every default applies."
+}

@@ -1,0 +1,6 @@
+{
+  "schema": "code-inventory/v1",
+  "spec_version": "1.0.1",
+  "type": "review-candidates",
+  "candidates": []
+}

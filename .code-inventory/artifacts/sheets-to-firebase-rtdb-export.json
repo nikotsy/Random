@@ -1,0 +1,43 @@
+{
+  "schema": "code-inventory/v1",
+  "spec_version": "1.0.1",
+  "type": "artifact",
+  "id": "sheets-to-firebase-rtdb-export",
+  "kind": "exporter",
+  "name": "writeDataToFirebase",
+  "aliases": [
+    "sheet to Firebase sync",
+    "spreadsheet to realtime database",
+    "beer list export"
+  ],
+  "summary": "Google Apps Script routine that reads every row of the first sheet of a spreadsheet and writes it into a Firebase Realtime Database node as an object keyed by one of the columns, turning a hand-maintained sheet into an app-readable dataset.",
+  "details": "The answer to \"have I ever pushed a Google Sheet into Firebase?\". Mechanism: getDataRange().getValues() reads the whole sheet in one call, the loop starts at index 1 to skip the header row, and rows are collected into a plain object keyed by the name column rather than an array — so the RTDB node is a map, lookups are by name, and re-running overwrites rather than appends. base.setData(\"beers\", ...) replaces the entire node each run; there is no merge and no delete detection beyond that. Column indexes are hard-coded positional (data[i][1] name, [2] country, [3] type, [4] style, [6] places), so inserting a column silently corrupts the export. Depends on the third-party FirebaseApp Apps Script library (FirebaseApp.getDatabaseByUrl), which must be added to the script project by library id; that dependency is invisible in the source and is the thing that stops a copy-paste of this file from running. The spreadsheet id and database URL are placeholdered (YOUR_GOOGLE_SHEET_ID, YOUR_FIREBASE_DATABSE_URL - typo in the original), and the data being exported is a personal beer catalogue.",
+  "capabilities": [
+    "export",
+    "seeding",
+    "sync"
+  ],
+  "technologies": [
+    "firebase-realtime-database",
+    "google-apps-script",
+    "google-sheets"
+  ],
+  "languages": [
+    "javascript"
+  ],
+  "source": [
+    {
+      "path": "AppsScript for sheets",
+      "symbol": "writeDataToFirebase",
+      "role": "primary"
+    }
+  ],
+  "status": "active",
+  "provenance": {
+    "first_indexed_sha": "1777d96171b2a89aea87fcbfb8c1eb394d42a49f",
+    "first_indexed_at": "2026-09-06T18:18:00Z",
+    "last_observed_sha": "1777d96171b2a89aea87fcbfb8c1eb394d42a49f",
+    "last_indexed_at": "2026-09-06T18:18:00Z",
+    "introduced_at_sha": "1777d96171b2a89aea87fcbfb8c1eb394d42a49f"
+  }
+}
